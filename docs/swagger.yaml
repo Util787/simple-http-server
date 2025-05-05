@@ -1,0 +1,63 @@
+definitions:
+  main.ChirpValidRespBody:
+    properties:
+      body:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/chirps:
+    get:
+      description: Getting all Chirps if query string is empty or all Chirps by the
+        author if authorID is provided in query string, you also can provide sort
+        order in query string
+      parameters:
+      - description: authorID
+        in: query
+        name: author_id
+        type: string
+      - description: Sort order, can either be 'asc' or 'desc', asc by default
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.ChirpValidRespBody'
+            type: array
+      summary: Getting all Chirps or all Chirps by the author
+      tags:
+      - Chirps
+  /api/chirps/{chirpID}:
+    get:
+      description: finding chirp by chirpID provided in path
+      parameters:
+      - description: chirpID
+        in: path
+        name: chirpID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.ChirpValidRespBody'
+      summary: finding chirp by chirpID
+      tags:
+      - Chirps
+swagger: "2.0"
