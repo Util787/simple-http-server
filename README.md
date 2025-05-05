@@ -9,20 +9,20 @@ Chirpy goal is to provide API functionality close to social network like Twitter
 ## Installation
 1.Install go
 
-3.Install goose
+2.Install goose
 ```go install github.com/pressly/goose/v3/cmd/goose@latest```
 
-4.Clone repo
+3.Clone repo
 
-5.Run goose up migrations with your postgres db uri
+4.Run goose up migrations with your postgres db uri
 
-6.Configure .env variables, for example:
+5.Configure .env variables, for example:
 DB_URL=""
 PLATFORM=""
 SECRETKEY=""
 POLKA_KEY=""
 
-7.Run the server by using next command in main directory:
+6.Run the server by using next command in main directory:
 ```go run .```
 
 ## Usage
