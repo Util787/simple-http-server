@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"log"
-	"myserver/internal/database" //обрати внимание myserver это название модуля
+	"myserver/internal/database" 
 	"net/http"
 	"os"
 	"sync/atomic"
@@ -17,7 +17,7 @@ func HomeHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-type", "text/plain; charset=utf-8")
 	w.Header().Set("X-My-Custom-Header", "This is a test header")
 
-	w.WriteHeader(http.StatusOK) //всегда ПОСЛЕ Header().Set()
+	w.WriteHeader(http.StatusOK) 
 
 	w.Write([]byte(http.StatusText(http.StatusOK)))
 }
@@ -71,7 +71,7 @@ func main() {
 	ServeMux.HandleFunc("POST /api/polka/webhooks", Apicfg.PolkaHandler)
 
 
-	//swagger documentation:http://localhost:8080/swagger/ вбить: /swagger/swagger.json
+	//swagger documentation:http://localhost:8080/swagger/ 
 	// Настройка маршрута для Swagger UI
 	ServeMux.Handle("/swagger/", http.StripPrefix("/swagger/", http.FileServer(http.Dir("swagger-ui/"))))
 
@@ -91,6 +91,6 @@ func main() {
 // на windows: go build -o out.exe && out.exe
 // http://localhost:8080
 
-//dsn: psql postgres://postgres:636@localhost:5432/chirpy?sslmode=disable
+//dsn: psql postgres://postgres:password@localhost:5432/chirpy?sslmode=disable
 
-//goose postgres postgres://postgres:636@localhost:5432/chirpy?sslmode=disable up migration_num
+//goose postgres postgres://postgres:password@localhost:5432/chirpy?sslmode=disable up migration_num
